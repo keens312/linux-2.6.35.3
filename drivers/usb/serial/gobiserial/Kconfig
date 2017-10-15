@@ -1,0 +1,6 @@
+config USB_GOBISERIAL
+	tristate "SIMCOM Modem USB Serial driver"
+	depends on IoT_3960 || IoT_3962
+	default y
+	help
+	  usb serial driver for SIMCOM modem

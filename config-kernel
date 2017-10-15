@@ -1,0 +1,118 @@
+#!/bin/sh
+
+echo "config menu"
+echo "  1   make distclean"
+echo "  2   config for EPC_28xA"
+echo "  3   config for EPC_283B"
+echo "  4   config for EPC_287B"
+echo "  5   config for EPC_280"
+echo "  6   config for IoT_3960"
+echo "  7   config for IoT_3962"
+echo "  8   config for A287_W128LI"
+echo "  9   config for A287_WB128LI"
+echo "  10  config for EasyARM-i.MX280A"
+echo "  11  config for EasyARM-i.MX283A"
+echo "  12  config for EasyARM-i.MX287A"
+echo "  13  config for EPC_283T"
+echo "  14  config for EPC_287T"
+echo "  q   exit"
+
+prompt_make() {
+	echo "*** Configure done,execute 'make uImage' to build kernel or try 'make menuconfig' for more customization. ***"
+	echo
+}
+
+make_distclean() {
+    echo "make distclean"
+    make clean
+}
+
+config_EPC_28xA() {
+	echo "EPC_28xA"
+    cp  arch/arm/configs/EPC_28xA_defconfig .config 
+	prompt_make
+}
+config_EPC_283B() {
+	echo "EPC_283B"
+    cp  arch/arm/configs/EPC_283B_defconfig .config 
+	prompt_make
+}
+config_EPC_287B() {
+	echo "EPC_287B"
+    cp  arch/arm/configs/EPC_287B_defconfig .config 
+	prompt_make
+}
+config_EPC_280() {
+	echo "EPC_280"
+    cp  arch/arm/configs/EPC_280_defconfig .config 
+	prompt_make
+}
+config_IoT_3960() {
+	echo "IoT_3960"
+    cp  arch/arm/configs/IoT_3960_defconfig .config
+	prompt_make
+}
+config_IoT_3962() {
+	echo "IoT_3962"
+    cp  arch/arm/configs/IoT_3962_defconfig .config
+	prompt_make
+}
+config_A287_W128LI() {
+	echo "A287_W128LI"
+    cp  arch/arm/configs/A287_W128LI_defconfig .config
+	prompt_make
+}
+config_A287_WB128LI() {
+	echo "A287_WB128LI"
+    cp  arch/arm/configs/A287_WB128LI_defconfig .config
+	prompt_make
+}
+config_EasyARM_iMX283A() {
+	echo "EasyARM-i.MX283A"
+    cp  arch/arm/configs/EPC_283B_defconfig .config 
+	prompt_make
+}
+config_EasyARM_iMX287A() {
+	echo "EasyARM-i.MX287A"
+    cp  arch/arm/configs/EPC_287B_defconfig .config 
+	prompt_make
+}
+config_EasyARM_iMX280A() {
+	echo "EasyARM-i.MX280A"
+    cp  arch/arm/configs/EPC_280_defconfig .config 
+	prompt_make
+}
+config_EPC_283T() {
+	echo "EPC_283T"
+    cp  arch/arm/configs/EPC_283T_defconfig .config 
+	prompt_make
+}
+config_EPC_287T() {
+	echo "EPC_287T"
+    cp  arch/arm/configs/EPC_287T_defconfig .config 
+	prompt_make
+}
+
+
+echo -n "please select your choice: "
+read sel
+echo "select $sel"
+
+case $sel in
+    "1") make_distclean;;
+    "2") config_EPC_28xA;;
+    "3") config_EPC_283B;;
+    "4") config_EPC_287B;;
+    "5") config_EPC_280;;
+    "6") config_IoT_3960;;
+    "7") config_IoT_3962;;
+    "8") config_A287_W128LI;;
+    "9") config_A287_WB128LI;;
+    "10") config_EasyARM_iMX280A;;
+    "11") config_EasyARM_iMX283A;;
+    "12") config_EasyARM_iMX287A;;
+    "13") config_EPC_283T;;
+    "14") config_EPC_287T;;
+    [q] | [Q]) exit 0;;
+    *)   echo "ONLY accept 1~14/q/Q"
+esac    

@@ -1,0 +1,44 @@
+config FB_MXS
+	tristate "MXS Framebuffer driver"
+	depends on FB && ARCH_MXS
+	select FB_CFB_FILLRECT
+	select FB_CFB_COPYAREA
+	select FB_CFB_IMAGEBLIT
+	default y
+	---help---
+	  Say Y here to enable support for the framebuffer driver for the
+	  Freescale MXS Board.
+
+choice
+	prompt "Select i.MXS PANEL LCD VGA LVDS"
+config TM043NDH02
+	bool "TM043NDH02"
+	depends on FB_MXS
+config THW480272F
+	bool "TMW480272F"
+	depends on FB_MXS
+	default y
+config TM070RDH13
+    bool "TM070RDH13"
+	depends on FB_MXS
+config TM070RDH12
+    bool "TM070RDH12"
+	depends on FB_MXS
+config LCD_APTFT70_SERIALS
+	bool "LCD(800x480) PANEL Compatible with AP-TFT-7.0(7')"
+	depends on FB_MXS
+endchoice
+
+
+config FB_MXS_LCD_LMS430
+	depends on FB_MXS
+	bool "LMS430"
+	default y if ARCH_MX23
+	---help---
+	  Use LMS430 dotclock LCD panel for MXS
+
+config FB_MXS_TVENC
+	depends on ARCH_MXS
+	bool "TVENC"
+	---help---
+	  Use TVOUT encoder for MXS

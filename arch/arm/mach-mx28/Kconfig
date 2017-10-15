@@ -1,0 +1,119 @@
+choice
+	prompt "Select i.MXS board type"
+
+config MACH_MX28EVK
+	bool "Freescale MX28 EVK board"
+	depends on ARCH_MX28
+	select USB_ARCH_HAS_EHCI
+
+endchoice
+
+choice
+	prompt "Select M28x platform"
+
+config EPC_28xA
+	bool "enable EPC-28xA"
+	depends on ARCH_MX28
+	select USB_ARCH_HAS_EHCI
+
+config EPC_283B
+	bool "enable EPC-283B"
+	depends on ARCH_MX28
+	select USB_ARCH_HAS_EHCI
+	
+config EPC_287B
+	bool "enable EPC-287B"
+	depends on ARCH_MX28
+	select USB_ARCH_HAS_EHCI
+	
+config EPC_280
+	bool "enable EPC-280"
+	depends on ARCH_MX28
+	select USB_ARCH_HAS_EHCI
+
+config IoT_3960
+	bool "enable IoT-3960"
+	depends on ARCH_MX28
+	select USB_ARCH_HAS_EHCI
+	
+config IoT_3962
+	bool "enable IoT-3962"
+	depends on ARCH_MX28
+	select USB_ARCH_HAS_EHCI
+	
+config A287_W128LI
+	bool "enable A287-W128LI"
+	depends on ARCH_MX28
+	select USB_ARCH_HAS_EHCI
+	
+config A287_WB128LI
+	bool "enable A287-WB128LI"
+	depends on ARCH_MX28
+	select USB_ARCH_HAS_EHCI
+
+endchoice
+
+config CONVERT_TO_SCR_MMC
+	bool "Convert to source for mmc module."
+	default y
+    help
+         this file locate drivers/mmc/host/mxs-mmc.c
+
+config CONVERT_TO_SCR_IIC
+	bool "Convert to source for IIC module."
+	default y
+    help
+         this dir locate drivers/i2c
+
+config CONVERT_TO_SCR_FEC                                                                                                      
+    bool "Convert to source for fec(net) module."
+    default y
+    help
+         this file locate drivers/net/fec.c /drivers/net/fec_switch.c
+
+config CONVERT_TO_SCR_CAN                                                                                                              
+    bool "Convert to source for can module."
+    default y
+    help
+         this file locate drivers/net/can/flexcan/drv.c
+
+config CONVERT_TO_SCR_NANDFLASH                                                                                                                   
+    bool "Convert to source for nandflash module."
+    default y
+    help
+         this file locate drivers/mtd/nand/gpmi-nfc/gpmi-nfc-main.c
+
+config VECTORS_PHY_ADDR
+	int "vectors address"
+	default 0
+	help
+	  This config set vectors table is located which physical address
+
+config MXS_TIMER_WITH_MACH
+	bool "System Timer support Compare Match interrupt"
+	default y
+
+config MEM_mDDR
+	bool "Memory type is mDDR"
+	depends on ARCH_MX28
+	help
+	  Say Y to select mDDR memory
+	  
+config SDIO2PDEV
+	bool "Init sdio2pdev "
+	depends on !(SPI2PDEV)
+	help
+	  Say Y to select sdio2pdev
+
+config SPI2PDEV
+	bool "Init spi2pdev "
+	depends on ARCH_MX28
+	help
+	  Say Y to select spi2pdev
+	  
+config USB_POWER_PIN
+	bool "Power enable pin"
+	depends on ARCH_MX28
+	help
+	  Say Y to select USB_POWER_PIN
+	  
